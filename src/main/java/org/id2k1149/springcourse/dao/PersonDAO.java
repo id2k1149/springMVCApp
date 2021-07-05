@@ -57,7 +57,6 @@ public class PersonDAO {
         return people;
     }
 
-
     public Person show(int id) {
 //        return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
         return null;
@@ -66,6 +65,15 @@ public class PersonDAO {
     public void save(Person person) {
 //        person.setId(++PEOPLE_COUNT);
 //        people.add(person);
+        try {
+            Statement statement = connection.createStatement();
+            String SQL = "INSERT INTO person VALUES(" + 5 + ", '" + person.getName() +
+                    "'," + person.getAge() + ",'" + person.getEmail() + "')";
+
+            statement.executeUpdate(SQL);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void update(int id, Person updatedPerson) {
