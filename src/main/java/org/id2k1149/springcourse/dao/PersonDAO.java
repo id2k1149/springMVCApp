@@ -63,8 +63,6 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-//        person.setId(++PEOPLE_COUNT);
-//        people.add(person);
         try {
             Statement statement = connection.createStatement();
             String SQL = "INSERT INTO person VALUES(" + 5 + ", '" + person.getName() +
